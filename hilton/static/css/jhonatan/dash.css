@@ -1,11 +1,9 @@
-/* Reset general */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Variables de color */
 :root {
     --primary-color: #0c1178;
     --body-color: #f7f8fa;
@@ -14,20 +12,17 @@
     --text-color: #ffffff;
 }
 
-/* Asegura que la página use todo el alto */
 html, body {
     height: 100%;
     background-color: var(--body-color);
     font-family: Arial, sans-serif;
 }
 
-/* Wrapper principal para empujar el footer al final */
 .wrapper {
-    min-height: calc(100vh - 70px); /* altura del menú */
-    padding-bottom: 70px; /* evita que el contenido sea tapado */
+    min-height: calc(100vh - 70px); 
+    padding-bottom: 70px; 
 }
 
-/* Estilo del título centrado */
 .col h1 {
     display: flex;
     justify-content: center;
@@ -36,7 +31,6 @@ html, body {
     color: var(--primary-color);
 }
 
-/* Menú fijo abajo */
 .menu {
     position: fixed;
     bottom: 20px;
@@ -55,7 +49,6 @@ html, body {
 }
 
 
-/* Enlaces del menú */
 .menu a {
     color: var(--text-color);
     text-decoration: none;
