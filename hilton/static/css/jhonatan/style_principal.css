@@ -1,0 +1,115 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --primary-color:#0c1178;
+    --body-color:#f7f8fa;
+    --secundary-color:#5d64f0;
+    --action-color:#c1c3f7;
+    --text-color:#ffffff;
+}
+
+
+body {
+    position: relative;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    transition: 1s ease;
+    height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Filtro oscuro (ajusta el 0.5 para más o menos oscuridad) */
+    z-index: -1; /* Coloca el filtro por debajo del contenido */
+}
+
+
+.formulario {
+    background-color: rgba(0, 0, 0, 0.2); 
+    border-radius: 10px; 
+    width: 450px;
+    padding:35px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.input-group {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group .form-control {
+    height: 50px;
+    font-size: 1em;
+    padding-left: 20px;
+}
+
+.btn-custom-1, .btn-custom-2 {
+    width: 100%;
+    padding: 12px;
+    font-size: 1em;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.btn-custom-1,.btn-custom-2  {
+    background-color: var(--secundary-color);
+    color: white;
+}
+
+
+.btn-custom-1:hover,.btn-custom-2:hover {
+    background-color:var(--action-color);
+    color: black;
+}
+
+
+
+.text-recuperacion {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.text-recuperacion:hover {
+    text-decoration: underline;
+}
+
+.row {
+    width: 100%;
+}
+
+.recu{
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+
