@@ -32,8 +32,8 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Filtro oscuro (ajusta el 0.5 para más o menos oscuridad) */
-    z-index: -1; /* Coloca el filtro por debajo del contenido */
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1; 
 }
 
 
@@ -79,17 +79,15 @@ h1 {
     margin-bottom: 15px;
 }
 
-.btn-custom-1,.btn-custom-2  {
-    background-color: var(--secundary-color);
-    color: white;
+.btn{
+    background-color: var(--secundary-color) !important;
+    color: white !important;
 }
 
-
-.btn-custom-1:hover,.btn-custom-2:hover {
-    background-color:var(--action-color);
-    color: black;
+.btn:hover {
+    background-color:var(--action-color) !important;
+    color: black !important;
 }
-
 
 
 .text-recuperacion {
