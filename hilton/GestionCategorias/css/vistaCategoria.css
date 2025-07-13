@@ -1,0 +1,30 @@
+:root {
+    --primary-color: #0c1178;
+    --body-color: #f7f8fa;
+    --secundary-color: #5d64f0;
+    --action-color: #c1c3f7;
+    --text-color: #ffffff;
+}
+.categoria{
+    border:var(--primary-color) solid 2px;
+    width: 400px;
+}
+.custom-btn{
+    background-color: var(--secundary-color);
+}
+.btn:hover{
+    background-color: var(--action-color)!important;
+    color: black !important;
+}
+.custom-btn-red{
+    background-color: #dc3545;
+}
+.custom-btn-red:hover{
+    background-color: #a71d2a !important;
+}
+
+.boton{
+    background-color: var(--primary-color);
+    width: 500px;
+}
+

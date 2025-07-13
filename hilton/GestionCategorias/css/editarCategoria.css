@@ -1,0 +1,17 @@
+:root {
+    --primary-color: #0c1178;
+    --body-color: #f7f8fa;
+    --secundary-color: #5d64f0;
+    --action-color: #c1c3f7;
+    --text-color: #ffffff;
+}
+.titulo{
+    color: #0c1178;
+}
+.boton{
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+.boton:hover {
+    background-color:var(--secundary-color)!important;
+}

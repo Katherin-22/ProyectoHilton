@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilton</title>
+    <link rel="stylesheet" href="../../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../bootstrap/iconos/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../css/vistaCategoria.css">
+</head>
+<body>
+    <div class="container-fluid d-flex flex-column align-items-center ">
+        <h2 class="categoria shadow rounded-3 text-center p-3 m-3">categoria de Hoteles</h2>
+        <div class="row mb-3">
+            <div class="col-auto">
+                <a class="btn custom-btn" href="../html/registroCategoria.html">Registrar Categoria</a>
+            </div>
+
+            <div class="col-auto">
+                <a class="btn custom-btn" href="../html/editarCategoria.html">Editar Categoria</a>
+            </div>
+
+            <div class="col-auto">
+                <a class="btn custom-btn-red" href="#">Eliminar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid ">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th><input type="checkbox" id="Select-all"></th>
+                        <th>Categoría</th>
+                        <th>Estrellas/Tipo</th>
+                        <th>Descripción</th>
+                        <th>Servicio</th>
+
+                    </tr>
+                </thead>
+                <tbody class="table-light">
+                    <tr>
+                    <td><input type="checkbox"></td>
+                    <td>Económico</td>
+                    <td>★</td>
+                    <td>Servicios muy básicos, ideal para estancias cortas y bajo presupuesto.</td>
+                    <td>Cama, baño (compartido o privado), limpieza básica.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container-fluid d-flex flex-column align-items-center mb-auto">
+        <a class="btn boton shadow rounded-3 text-center text-white" href="../../administracion/html/administracion.html"> < Atrás</a>
+    </div>
+</body>
+</html>
