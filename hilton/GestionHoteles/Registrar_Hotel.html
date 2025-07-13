@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Hotel</title>
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../static/css/jhonatan/dash.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container mt-5">
+      <div class="row titulo">
+        <div class="col text-center">
+          <h1>Registrar Hotel Hilton</h1>
+        </div>
+      </div>
+
+      <form action="/registrar_hotel" method="POST" enctype="multipart/form-data" class="mt-4">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre del Hotel</label>
+          <input type="text" class="form-control" id="nombre" name="nombre" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <textarea class="form-control" id="descripcion" name="descripcion" rows="3" required></textarea>
+        </div>
+
+        <div class="mb-3">
+          <label for="estrellas" class="form-label">Estrellas</label>
+          <select class="form-select" id="estrellas" name="estrellas" required>
+            <option selected disabled>Selecciona</option>
+            <option value="1">1 estrella</option>
+            <option value="2">2 estrellas</option>
+            <option value="3">3 estrellas</option>
+            <option value="4">4 estrellas</option>
+            <option value="5">5 estrellas</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="categoria" class="form-label">Categoría</label>
+          <select class="form-select" id="categoria" name="categoria" required>
+            <option selected disabled>Selecciona</option>
+            <option value="negocios">Negocios</option>
+            <option value="lujo">Lujo</option>
+            <option value="familiar">Familiar</option>
+            <option value="turismo">Turismo</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="fecha" class="form-label">Fecha de Apertura</label>
+          <input type="date" class="form-control" id="fecha" name="fecha" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="direccion" class="form-label">Dirección</label>
+          <input type="text" class="form-control" id="direccion" name="direccion" required>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <label for="ciudad" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad" name="ciudad" required>
+          </div>
+          <div class="col">
+            <label for="pais" class="form-label">País</label>
+            <input type="text" class="form-control" id="pais" name="pais" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="telefono" class="form-label">Teléfono de Contacto</label>
+          <input type="tel" class="form-control" id="telefono" name="telefono" required>
+        </div>
+
+        <div class="mb-3">
+          <label for="correo" class="form-label">Correo Electrónico</label>
+          <input type="email" class="form-control" id="correo" name="correo" required>
+        </div>
+
+
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Registrar Hotel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
