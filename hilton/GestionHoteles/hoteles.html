@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/css/jhonatan/dash.css">
+  <title>Hoteles</title>
+
+</head>
+<body>
+  <div class="wrapper">
+    <div class="container">
+      <div class="row titulo-h">
+        <div class="col">
+          <h1>Hoteles</h1>
+        </div>
+      </div>
+
+      <div class="row justify-content-center menu-btn">
+        <div class="col-auto">
+          <a class="btn custom-btn" href="./Registrar_Hotel.html">Registrar hotel</a>
+        </div>
+        <div class="col-auto">
+          <a class="btn custom-btn" href="">Editar hotel</a>
+        </div>
+        <div class="col-auto">
+          <a class="btn custom-btn-red" href="">Eliminar</a>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mt-4">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle text-center">
+              <thead class="table-primary">
+                <tr>
+                  <th><input type="checkbox" id="select-all"></th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Estrellas</th>
+                  <th>Categoría</th>
+                  <th>Fecha</th>
+                  <th>Dirección</th>
+                  <th>Ciudad</th>
+                  <th>País</th>
+                  <th>Teléfono</th>
+                  <th>Correo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input type="checkbox" class="hotel-checkbox" name="hoteles_seleccionados[]" value="1"></td>
+                  <td>Hilton Bogotá</td>
+                  <td>Hotel de lujo ubicado en el centro financiero.</td>
+                  <td>5</td>
+                  <td>Negocios</td>
+                  <td>2012-07-01</td>
+                  <td>Calle 100 #8A - 55</td>
+                  <td>Bogotá</td>
+                  <td>Colombia</td>
+                  <td>+57 1 6000000</td>
+                  <td>contacto@hiltonbogota.com</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Menú inferior principal -->
+  <footer class="menu">
+    <a href="./dashboard.html">&lt; Atrás</a>
+    <a class="selected" href="">Hoteles</a>
+  </footer>
+
+  <!-- Menú de salida pequeño -->
+  <div class="menu-salida">
+    <a href="./logout.html" class="logout-link">Cerrar sesión</a>
+  </div>
+
+  <script src="../static/js/jhonatan/frm.js"></script>
+</body>
+</html>
