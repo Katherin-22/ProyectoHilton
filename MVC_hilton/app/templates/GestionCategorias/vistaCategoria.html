@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilton</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/iconos/bootstrap-icons.min.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/katherin/vistaCategoria.css' )}}">
+</head>
+<body>
+    <!--Aqui empieza la logica-->
+<form method="POST" action="{{ url_for('categoria_bp.procesar_accion') }}">
+
+    <div class="container-fluid d-flex flex-column align-items-center ">
+        <h2 class="categoria shadow rounded-3 text-center p-3 m-3">categoria de Hoteles</h2>
+        <div class="row mb-3">
+            <div class="col-auto">
+                <a class="btn custom-btn" href="{{ url_for('categoria_bp.crear_categoria')}}">Registrar Categoria</a>
+            </div>
+
+            <div class="col-auto">
+                <button type="submit" name="accion" value="editar" class="btn custom-btn">Editar Categoria ✎</button>
+            </div>
+
+
+            <div class="col-auto">
+                <button type="submit" name="accion" value="eliminar" class="btn custom-btn-red">Eliminar Categoria ✖</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid ">
+        <div class="table-responsive">
+            <table class="table table-bordered text-center">
+                <thead class="table-primary">
+                    <tr>
+                        <th><input type="checkbox" id="Select-all"></th>
+                        <th>Categoría</th>
+                        <th>Estrellas/Tipo</th>
+                        <th>Descripción</th>
+                        <th>Servicio</th>
+                    </tr>
+                </thead>
+                <tbody class="table-light">
+                    {% for c in categorias %}
+                    <tr>
+                        <td><input type="checkbox" name="categorias_seleccionadas" value="{{ c.idCategoria }}"></td>
+                        <td>{{ c.nombre }}</td>
+                        <td>{{ c.tipo }}</td>
+                        <td>{{ c.descripcion }}</td>
+                        <td>{{ c.servicio }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</form>
+<!--fin-->    
+    <div class="container-fluid d-flex flex-column align-items-center mb-auto">
+        <a class="btn boton shadow rounded-3 text-center text-white" href="{{ url_for('admin_bp.administracion') }}"> < Atrás</a>
+    </div>
+
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hilton</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css' )}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/iconos/bootstrap-icons.min.css' )}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/katherin/administracion.css' )}}">
+</head>
+<body>
+    <!--inicio-nabvar-->
+    <div class="container-fluid">
+        <div class="row">
+
+            <div class="col-3 border navegable">
+            <div class="nombrePerfil text-center mt-5">
+                <h3 class="text-white">nombre</h3> 
+            </div>
+            <nav  class="nav flex-column text-center min-vh-100 d-flex flex-column justify-content-center ">
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Usuarios</a>
+                <a class="nav-link mb-3 text-white" href="{{url_for('categoria_bp.ver_categoria')}}">Gestión de Categorias</a>
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Hoteles</a> 
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Tipo de Habitaciones</a>
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Habitaciones</a>   
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Reservas</a>   
+                <a class="nav-link mb-3 text-white" href="#">Gestión de Temporadas</a>  
+                <a class="nav-link mb-3 text-white" href="#">Reportes</a>   
+ 
+            </nav>
+                <div class="text-center mb-5">
+                    <a href="{{url_for('main_bp.home')}}" class="btn btn-danger ">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+
+            <div class="col-9">
+                <h1 class="text-center">Bienvenido al Dashboard del Administrador</h1>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Total de Usuarios</h4>
+                                <p>{{user_count}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Total de Categorías</h4>
+                                <p>{{categoria_count}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h4>Total de Hoteles</h4>
+                                <p>{{hotel_count}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--fin-nabvar-->
+<script src="{{ url_for('static', filename='bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+</body>
+</html>
