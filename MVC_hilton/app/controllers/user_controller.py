@@ -1,6 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app, session
 from app import get_connection
 from app.models.user_model import registrar_usuario, obtener_usuario_por_correo
+from app.models.categoria_model import get_categoria_count
+from app.models.hoteles_model import get_hotel_count
+from app.models.user_model import get_user_by_id
 
 user_bp = Blueprint('user', __name__)
 
@@ -42,7 +45,7 @@ def login():
         if usuario:
             session['usuario'] = usuario  # Guarda el usuario en sesión
             flash(f'Bienvenido, {usuario["nombre"]}', 'success')
-            return redirect(url_for('user.dashboard'))  # redirige al dashboard
+            return redirect(url_for('user.administracion'))  # redirige al dashboard
         else:
             flash('Usuario o contraseña incorrectos.', 'danger')
             return redirect(url_for('user.login'))
@@ -62,11 +65,20 @@ def logout():
     flash('Sesión cerrada exitosamente', 'info')
     return redirect(url_for('user.login'))  
 
-@user_bp.route('/dashboard')
-def dashboard():
-    usuario = session.get('usuario')
-    if not usuario:
-        flash('Debes iniciar sesión primero.', 'warning')
-        return redirect(url_for('user.login'))
+@user_bp.route('/administracion')
+def administracion():
 
-    return render_template('administracion/administracion.html', user=usuario)
+    connection = current_app.connection
+
+    # estadísticas del sistema
+    categoria_count = get_categoria_count(connection)
+    hotel_count = get_hotel_count(connection)
+
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT COUNT(*) AS user_count FROM usuario")
+        user_count = cursor.fetchone()['user_count']
+
+    return render_template('administracion/administracion.html', 
+                           user_count=user_count,
+                           categoria_count=categoria_count,
+                           hotel_count=hotel_count)
