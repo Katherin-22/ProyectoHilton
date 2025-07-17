@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../static/css/jhonatan/dash.css">
   <title>Hoteles</title>
-
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jhonatan/dash.css') }}">
 </head>
 <body>
   <div class="wrapper">
@@ -17,15 +16,26 @@
         </div>
       </div>
 
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show mt-3" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
       <div class="row justify-content-center menu-btn">
         <div class="col-auto">
-          <a class="btn custom-btn" href="./Registrar_Hotel.html">Registrar hotel</a>
+          <a class="btn custom-btn" href="{{ url_for('hotel.registrar_hotel') }}">Registrar hotel</a>
         </div>
         <div class="col-auto">
-          <a class="btn custom-btn" href="">Editar hotel</a>
-        </div>
-        <div class="col-auto">
-          <a class="btn custom-btn-red" href="">Eliminar</a>
+          <form id="formEliminar" method="POST" action="{{ url_for('hotel.eliminar_hoteles') }}">
+            <input type="hidden" name="ids_eliminar" id="idsEliminar">
+            <button type="submit" class="btn custom-btn-red" onclick="return confirmarEliminacion()">Ocultar</button>
+          </form>
         </div>
       </div>
 
@@ -46,42 +56,72 @@
                   <th>País</th>
                   <th>Teléfono</th>
                   <th>Correo</th>
+                  <th>Acciones</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td><input type="checkbox" class="hotel-checkbox" name="hoteles_seleccionados[]" value="1"></td>
-                  <td>Hilton Bogotá</td>
-                  <td>Hotel de lujo ubicado en el centro financiero.</td>
-                  <td>5</td>
-                  <td>Negocios</td>
-                  <td>2012-07-01</td>
-                  <td>Calle 100 #8A - 55</td>
-                  <td>Bogotá</td>
-                  <td>Colombia</td>
-                  <td>+57 1 6000000</td>
-                  <td>contacto@hiltonbogota.com</td>
-                </tr>
+                {% if hoteles and hoteles|length > 0 %}
+                  {% for hotel in hoteles %}
+                    <tr>
+                      <td><input type="checkbox" class="hotel-checkbox" value="{{ hotel.idHotel }}"></td>
+                      <td>{{ hotel.Nombre_Hotel }}</td>
+                      <td>{{ hotel.Descripcion }}</td>
+                      <td>{{ hotel.Estrellas or 'N/A' }}</td>
+                      <td>{{ hotel.categoria_nombre or 'Sin categoría' }}</td>
+                      <td>{{ hotel.Fecha_apertura }}</td>
+                      <td>{{ hotel.Direccion }}</td>
+                      <td>{{ hotel.ciudad }}</td>
+                      <td>{{ hotel.Pais }}</td>
+                      <td>{{ hotel.Telefono_contacto }}</td>
+                      <td>{{ hotel.correo_electronico }}</td>
+                      <td>
+                        <a href="{{ url_for('hotel.editar_hotel_view', id=hotel.idHotel) }}" class="btn btn-sm btn-primary">Editar</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                {% else %}
+                  <tr><td colspan="12">No hay hoteles registrados.</td></tr>
+                {% endif %}
               </tbody>
             </table>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- Menú inferior principal -->
   <footer class="menu">
-    <a href="./dashboard.html">&lt; Atrás</a>
-    <a class="selected" href="">Hoteles</a>
+    <a href="{{ url_for('user.dashboard') }}">&lt; Atrás</a>
   </footer>
 
-  <!-- Menú de salida pequeño -->
-  <div class="menu-salida">
-    <a href="./logout.html" class="logout-link">Cerrar sesión</a>
-  </div>
+  <script>
+    document.getElementById('select-all').addEventListener('change', function () {
+      const checkboxes = document.querySelectorAll('.hotel-checkbox');
+      checkboxes.forEach(cb => cb.checked = this.checked);
+    });
 
-  <script src="../static/js/jhonatan/frm.js"></script>
+    function confirmarEliminacion() {
+      const seleccionados = Array.from(document.querySelectorAll('.hotel-checkbox:checked')).map(cb => cb.value);
+      if (seleccionados.length === 0) {
+        alert('Seleccione al menos un hotel para ocultar.');
+        return false;
+      }
+
+      if (!confirm('¿Estás seguro de ocultar los hoteles seleccionados?')) {
+        return false;
+      }
+
+      document.getElementById('idsEliminar').value = seleccionados.join(',');
+      seleccionados.forEach(id => {
+        const checkbox = document.querySelector('.hotel-checkbox[value="' + id + '"]');
+        if (checkbox) {
+          const fila = checkbox.closest('tr');
+          if (fila) fila.style.display = 'none';
+        }
+      });
+
+      return true;
+    }
+  </script>
 </body>
 </html>

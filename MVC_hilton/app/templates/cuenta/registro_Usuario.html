@@ -1,36 +1,47 @@
+<!-- templates/ModuloPrincipal/registro_usuario.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../static/css/jhonatan/style_principal.css">
-    <title>Registro</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jhonatan/style_principal.css') }}">
+  <title>Registro</title>
 </head>
 <body>
 
-<form class="formulario" action="/registrar_usuario" method="POST">
-    <h1>Crear usuario</h1>
+<form class="formulario" action="{{ url_for('user.registrar_usuario_route') }}" method="POST">
+  <h1>Crear usuario</h1>
 
-    <div class="input-group mb-3">
-        <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
-    </div>
+  <div class="input-group mb-3">
+    <input type="text" class="form-control" name="nombre" placeholder="Nombre" required>
+  </div>
 
-    <div class="input-group mb-3">
-        <span class="input-group-text">@</span>
-        <input type="email" class="form-control" name="correo" placeholder="Correo" required>
-    </div>
+  <div class="input-group mb-3">
+    <span class="input-group-text">@</span>
+    <input type="email" class="form-control" name="correo" placeholder="Correo" required>
+  </div>
 
-    <div class="input-group mb-3">
-        <input type="password" class="form-control" name="contrasena" placeholder="Contraseña" required>
-    </div>
+  <div class="input-group mb-3">
+    <input type="password" class="form-control" name="contrasena" placeholder="Contraseña" required>
+  </div>
 
-    <div class="row row-cols-1">
-        <div class="col">
-            <button type="submit" class="btn btn-custom-2">Registrar usuario</button>
-        </div>
+  <div class="mb-3">
+    <label for="origen" class="form-label">Origen</label>
+    <select class="form-select" id="origen" name="origen" required>
+      <option selected disabled>Selecciona</option>
+      <option value="Colombiano">Colombiano</option>
+      <option value="Extranjero">Extranjero</option>
+    </select>
+  </div>
+
+  <div class="row row-cols-1">
+    <div class="col">
+      <button type="submit" class="btn btn-custom-2">Registrar usuario</button>
     </div>
+  </div>
 </form>
-<script src="../static/js/jhonatan/imicio.js"></script>
+
+<script src="{{ url_for('static', filename='js/jhonatan/imicio.js') }}"></script>
 </body>
 </html>

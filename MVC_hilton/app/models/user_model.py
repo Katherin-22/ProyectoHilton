@@ -1,3 +1,5 @@
+import pymysql
+
 def registrar_usuario(connection, nombre, correo_usuario, contraseña, origen):
     try:
         cursor = connection.cursor()
@@ -9,8 +11,6 @@ def registrar_usuario(connection, nombre, correo_usuario, contraseña, origen):
         cursor.close()
     except Exception as e:
         print("Error al insertar usuario:", e)
-
-# app/models/user_model.py
 
 def obtener_usuario_por_correo(connection, correo, contraseña):
     try:
@@ -26,7 +26,25 @@ def obtener_usuario_por_correo(connection, correo, contraseña):
         print("Error al consultar usuario:", e)
         return None
 
-def get_user_by_id(connection, id_usuario):
-    with connection.cursor() as cursor:
-        cursor.execute("SELECT id_usuario,nombre, correo_usuario, contraseña, origen FROM usuarios WHERE id=%s", (id_usuario,))
-        return cursor.fetchone()
+def get_connection():
+    return pymysql.connect(
+        host='localhost',
+        user='root',
+        password='tu_contraseña',
+        database='HotelHilton',
+        cursorclass=pymysql.cursors.DictCursor
+    )
+
+def get_user_by_id(user_id):
+    connection = get_connection()
+    try:
+        with connection.cursor() as cursor:
+            sql = "SELECT * FROM usuario WHERE id = %s"
+            cursor.execute(sql, (user_id,))
+            result = cursor.fetchone()
+        return result
+    except Exception as e:
+        print("Error al obtener usuario por ID:", e)
+        return None
+    finally:
+        connection.close()
